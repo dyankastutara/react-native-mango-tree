@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
+import { initiate } from '../actions/action';
 
 import {
   View,
@@ -34,7 +35,6 @@ class WelcomeScreen extends Component{
   }
 
   render(){
-    console.log(this.props);
     return(
       <View>
         <View>
