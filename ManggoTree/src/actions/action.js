@@ -1,5 +1,27 @@
 import store from '../store/configureStore';
 
+export const addAge = () => {
+  let images = store.getState().images;
+  let selectedImage = images[4];
+  if (store.getState().age < store.getState().bearingAge) {
+    if (store.getState().age < 3) {
+      selectedImage = images[0];
+    } else if (store.getState().age < 5) {
+      selectedImage = images[1];
+    } else {
+      selectedImage = images[2];
+    }
+  } else if (store.getState().age >= store.getState().bearingAge) {
+    selectedImage = images[3];
+  } else {
+    selectedImage = images[4];
+  }
+  return {
+    type: 'ADD_AGE',
+    payload: selectedImage
+  }
+}
+
 export const isHealthy = (age) => {
   if (age >= store.getState().maxAge) {
     return {
@@ -13,6 +35,12 @@ export const isHealthy = (age) => {
   };
 }
 
+
+export const harvestFruit = () => {
+  return {
+    type: 'HARVEST',
+  }
+}
 export const bearFruit = (age) => {
   let fruits = 0;
   if (age >= store.getState().bearingAge) {
@@ -24,13 +52,7 @@ export const bearFruit = (age) => {
   }
 }
 
-export const harvestFruit = () => {
-  return {
-    type: 'HARVEST_FRUIT',
-  }
-}
-
-export const initiate = (username, treeName) => {
+export const initiate = (username, treename) => {
   const maxAge = Math.floor(Math.random()*5) + 15;
   const bearingAge = Math.floor(Math.random()*3) + 8;
   return {
@@ -39,7 +61,7 @@ export const initiate = (username, treeName) => {
       maxAge,
       bearingAge,
       username,
-      treeName
+      treename
     }
   }
 }

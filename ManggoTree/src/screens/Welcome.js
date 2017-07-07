@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { StackNavigator } from 'react-navigation';
+import { connect } from 'react-redux';
 
 import {
   View,
@@ -23,15 +24,17 @@ class WelcomeScreen extends Component{
       this.setState({
         message: '',
       });
+      this.props.start(this.state.username, this.state.treename)
+      this.props.navigation.navigate('Simulation');
     } else {
       this.setState({
         message: 'Username and Tree Name are required',
       });
     }
-
   }
 
   render(){
+    console.log(this.props);
     return(
       <View>
         <View>
@@ -54,13 +57,34 @@ class WelcomeScreen extends Component{
           />
         </View>
         <Button
-          onPress={()=>{}}
+          onPress={() => this.start() }
           title="Start"
           color="#841584"
         />
+        <Text>{this.state.message}</Text>
       </View>
     )
   }
 }
 
-export default WelcomeScreen;
+const mapStateToProps = (state) => {
+  return {
+    username: state.username,
+    treename: state.treename,
+    maxAge: state.maxAge,
+    bearingAge: state.bearingAge,
+    currentHarvest: state.currentHarvest,
+    totalHarvest: state.totalHarvest,
+    isHealthy: state.isHealthy,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    start: (username, treename) => dispatch(initiate(username, treename)),
+  };
+}
+
+const Home = connect(mapStateToProps, mapDispatchToProps)(WelcomeScreen);
+
+export default Home;

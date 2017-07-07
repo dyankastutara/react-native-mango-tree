@@ -13,14 +13,12 @@ import {
 } from 'react-native';
 
 import App from './src/App'
-// import Welcome from './src/screens/Welcome'
+import Welcome from './src/screens/Welcome'
 
 class ManggoTree extends Component {
   render() {
     return (
-      <View>
         <App />
-      </View>
     );
   }
 }

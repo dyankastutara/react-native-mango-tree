@@ -6,21 +6,21 @@ import { StackNavigator } from 'react-navigation';
 import store from './store/configureStore';
 import Welcome from './screens/Welcome';
 import Simulation from './screens/Simulation';
-// import GameOver from './screens/GameOver';
+import GameOver from './screens/GameOver';
 
 const AppNav = StackNavigator({
   Home: { screen: Welcome },
   Simulation: { screen: Simulation },
-  // GameOver: { screen: GameOver },
+  GameOver: { screen: GameOver },
 }, { headerMode: 'none' });
 
 
-const AppWithStore = () => {
+const AppStore = () => {
   return (
-    <View>
-      <Simulation />
-    </View>
+    <Provider store={store}>
+      <AppNav />
+    </Provider>
   );
 }
 
-export default AppWithStore;
+export default AppStore;
