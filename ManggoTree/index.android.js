@@ -11,13 +11,14 @@ import {
   Text,
   View
 } from 'react-native';
-import App from './src/App'
 
-export default class ManggoTree extends Component {
+import App from './src/App'
+// import Welcome from './src/screens/Welcome'
+
+class ManggoTree extends Component {
   render() {
     return (
       <View>
-        <Text>test</Text>
         <App />
       </View>
     );

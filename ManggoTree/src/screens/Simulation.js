@@ -7,22 +7,12 @@ import {
   Button
 } from 'react-native';
 
-class HomeScreen extends Component{
-  static navigationOptions = {
-    title: 'Home',
-  }
-  constructor(){
-    super();
-    this.state = {
-      username:'',
-      treename:''
-    }
-  }
+class SimulationScreen extends Component{
   render(){
     return(
       <View>
         <View>
-          <Text>Home</Text>
+          <Text>SimulationScreen</Text>
         </View>
 
       </View>
@@ -30,4 +20,4 @@ class HomeScreen extends Component{
   }
 }
 
-export default HomeScreen;
+export default SimulationScreen;

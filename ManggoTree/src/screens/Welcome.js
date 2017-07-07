@@ -9,16 +9,28 @@ import {
 } from 'react-native';
 
 class WelcomeScreen extends Component{
-  static navigationOptions = {
-    title: 'Welcome',
-  }
   constructor(){
     super();
     this.state = {
       username:'',
-      treename:''
+      treename:'',
+      message:''
     }
   }
+
+  start() {
+    if(this.state.username.length > 0 && this.state.treename.length > 0) {
+      this.setState({
+        message: '',
+      });
+    } else {
+      this.setState({
+        message: 'Username and Tree Name are required',
+      });
+    }
+
+  }
+
   render(){
     return(
       <View>
@@ -28,7 +40,7 @@ class WelcomeScreen extends Component{
         <View>
           <Text>Username</Text>
           <TextInput
-            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+            style={{height: 30,}}
             onChangeText={(username) => this.setState({username})}
             value={this.state.username}
           />
@@ -36,17 +48,16 @@ class WelcomeScreen extends Component{
         <View>
           <Text>Tree Name</Text>
           <TextInput
-            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+            style={{height: 30}}
             onChangeText={(treename) => this.setState({treename})}
             value={this.state.treename}
           />
         </View>
-        <View>
-          {/* <Button
-            title="Start"
-            color="#841584"
-          /> */}
-        </View>
+        <Button
+          onPress={()=>{}}
+          title="Start"
+          color="#841584"
+        />
       </View>
     )
   }
